@@ -1,4 +1,10 @@
-﻿namespace GuessTheNumber2._0;
+/*
+CREATED BY Perss00n
+Email: Perss00n@gmail.com
+Discord: Perss00n
+*/
+
+namespace GuessTheNumber2._0;
 public class Display
 {
     public void Menu()
