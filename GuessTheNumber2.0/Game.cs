@@ -13,12 +13,6 @@ public class Game
     {
         Console.Clear();
 
-        if (TotalRoundsPlayed >= 5)
-        {
-            Console.WriteLine("The maximum number of 5 rounds has been played. Game Over!");
-            return;
-        }
-
         int secretNum = 0;
 
         if (level == 1)
@@ -29,11 +23,11 @@ public class Game
             secretNum = Random.Shared.Next(1, 121);
 
         int userGuess = 0;
-        int timerToGuess = 30;
+        int guessTimer = 30;
         int maxAllowedGuesses = 10;
         bool isValidGuess = false;
 
-        Console.WriteLine($"###RULES!###\nYou have {timerToGuess} seconds to guess the secret number ranging from {(level == 1 ? "1 - 30" : level == 2 ? "1 - 60" : "1 - 120")} and a maximum of {maxAllowedGuesses} guesses! goGoGO!!!");
+        Console.WriteLine($"###RULES!###\nYou have {guessTimer} seconds to guess the secret number ranging from {(level == 1 ? "1 - 30" : level == 2 ? "1 - 60" : "1 - 120")} and a maximum of {maxAllowedGuesses} guesses! goGoGO!!!");
         do
         {
             Task inputTask = Task.Run(() =>
@@ -42,7 +36,7 @@ public class Game
                 isValidGuess = Int32.TryParse(Console.ReadLine(), out userGuess);
             });
 
-            bool inputReceivedInTime = Task.WaitAny(new[] { inputTask }, TimeSpan.FromSeconds(timerToGuess)) == 0;
+            bool inputReceivedInTime = Task.WaitAny(new[] { inputTask }, TimeSpan.FromSeconds(guessTimer)) == 0;
 
             if (!inputReceivedInTime)
             {

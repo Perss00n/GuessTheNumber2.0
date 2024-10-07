@@ -10,6 +10,7 @@ public class Display
     public void Menu()
     {
         int input;
+        int maxAllowedRounds = 5;
         bool isValidInput;
 
         do
@@ -40,9 +41,9 @@ public class Display
                 case 5: Console.WriteLine("Thank you for playing! See ya around!"); return;
             }
 
-        } while (Game.TotalRoundsPlayed < 5);
+        } while (Game.TotalRoundsPlayed < maxAllowedRounds);
 
-        Console.WriteLine("The game has ended. The maximum of 5 rounds has been played.");
+        Console.WriteLine($"The game has ended. The maximum of {maxAllowedRounds} rounds has been played.");
         Console.WriteLine("The final score will be shown above. Thank you for playing! See ya around!");
     }
 
